@@ -4,24 +4,6 @@ export const siteConfig = {
   footer: '© 2026 AI Tools Hub · 收录优质 AI 工具导航',
 };
 
-export const ads = {
-  topBanner: {
-    id: 'ad-top-banner',
-    label: '顶部横幅广告',
-    html: '<div class="ad-placeholder-inner"><span>728 × 90</span><p>在此处放置您的广告代码</p></div>',
-  },
-  sidebar: {
-    id: 'ad-sidebar',
-    label: '侧边栏广告',
-    html: '<div class="ad-placeholder-inner"><span>300 × 250</span><p>在此处放置您的广告代码</p></div>',
-  },
-  inline: {
-    id: 'ad-inline',
-    label: '分类间广告',
-    html: '<div class="ad-placeholder-inner"><span>728 × 90</span><p>在此处放置您的广告代码</p></div>',
-  },
-};
-
 export const categories = [
   {
     id: 'chat',

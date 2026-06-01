@@ -128,85 +128,6 @@ body {
   box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
-/* ── Ad Slots ── */
-.ad-slot {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.ad-top {
-  padding-top: 16px;
-  padding-bottom: 8px;
-}
-
-.ad-block {
-  position: relative;
-  border: 1px dashed rgba(61, 61, 82, 0.6);
-  border-radius: var(--radius-sm);
-  background: rgba(24, 24, 36, 0.5);
-  overflow: hidden;
-  opacity: 0.7;
-}
-
-.ad-label {
-  position: absolute;
-  top: 6px;
-  left: 10px;
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  z-index: 1;
-}
-
-.ad-placeholder-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  color: var(--text-muted);
-}
-
-.ad-top .ad-block {
-  min-height: 70px;
-}
-
-.ad-top .ad-placeholder-inner {
-  min-height: 70px;
-}
-
-.ad-sidebar .ad-block {
-  min-height: 200px;
-}
-
-.ad-sidebar .ad-placeholder-inner {
-  min-height: 200px;
-}
-
-.ad-inline {
-  padding: 16px 0;
-}
-
-.ad-inline .ad-block {
-  min-height: 70px;
-}
-
-.ad-inline .ad-placeholder-inner {
-  min-height: 70px;
-}
-
-.ad-placeholder-inner span {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.ad-placeholder-inner p {
-  font-size: 0.75rem;
-}
-
 /* ── Layout ── */
 .main {
   max-width: 1280px;
@@ -660,10 +581,6 @@ body {
 
   .nav-count {
     display: none;
-  }
-
-  #ad-sidebar {
-    width: 100%;
   }
 }
 

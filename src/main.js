@@ -1,5 +1,5 @@
-import { siteConfig, ads, categories } from './data.js';
-import { fetchTopGitHubSkills } from './github-skills.js';
+import { siteConfig, categories } from './data.js';
+import { fetchTopGitHubSkills, SKILLS_LIMIT } from './github-skills.js';
 
 const SKILLS_SECTION_ID = 'github-skills';
 
@@ -15,20 +15,6 @@ const skillsPanel = document.getElementById('github-skills');
 
 let activeCategory = null;
 let cachedSkills = [];
-
-function renderAds() {
-  document.getElementById('ad-top').innerHTML = renderAdSlot(ads.topBanner);
-  document.getElementById('ad-sidebar').innerHTML = renderAdSlot(ads.sidebar);
-}
-
-function renderAdSlot(ad) {
-  return `
-    <div class="ad-block" data-ad="${ad.id}">
-      <span class="ad-label">${ad.label}</span>
-      ${ad.html}
-    </div>
-  `;
-}
 
 function renderNav() {
   const categoryItems = categories
@@ -50,7 +36,7 @@ function renderNav() {
       <a href="#${SKILLS_SECTION_ID}" class="nav-link nav-link-skills" data-id="${SKILLS_SECTION_ID}">
         <span class="nav-icon">⭐</span>
         <span>热门 Skills</span>
-        <span class="nav-count" id="nav-skills-count">${cachedSkills.length || '—'}</span>
+        <span class="nav-count" id="nav-skills-count">${cachedSkills.length}</span>
       </a>
     </li>
     <li class="nav-divider" aria-hidden="true"></li>
@@ -70,7 +56,7 @@ function renderNav() {
 
 function updateNavSkillsCount(count) {
   const el = document.getElementById('nav-skills-count');
-  if (el) el.textContent = count;
+  if (el) el.textContent = String(count);
 }
 
 function setActiveNav(id) {
@@ -189,7 +175,7 @@ function renderCategories(filter = '') {
   let totalVisible = 0;
 
   toolsContainer.innerHTML = categories
-    .map((cat, index) => {
+    .map((cat) => {
       const filteredTools = cat.tools.filter(
         (t) =>
           !query ||
@@ -202,13 +188,7 @@ function renderCategories(filter = '') {
 
       totalVisible += filteredTools.length;
 
-      const inlineAd =
-        index > 0 && index % 2 === 0 && !query
-          ? `<div class="ad-slot ad-inline">${renderAdSlot(ads.inline)}</div>`
-          : '';
-
       return `
-        ${inlineAd}
         <section class="category-section" id="${cat.id}">
           <div class="category-header">
             <span class="category-icon">${cat.icon}</span>
@@ -297,12 +277,15 @@ async function loadGitHubSkills() {
   skillsRefresh?.classList.add('spinning');
 
   try {
-    cachedSkills = await fetchTopGitHubSkills(5);
+    cachedSkills = await fetchTopGitHubSkills(SKILLS_LIMIT);
     renderSkillsSection(searchInput.value);
     updateNavSkillsCount(cachedSkills.length);
     observeSections();
   } catch {
+    cachedSkills = [];
     renderSkillsError('加载失败，请检查网络后重试');
+    updateNavSkillsCount(0);
+    if (skillsCount) skillsCount.textContent = '0 个 Skills';
   } finally {
     skillsRefresh?.classList.remove('spinning');
   }
@@ -315,7 +298,6 @@ function setupGitHubSkills() {
 
 function init() {
   footerText.textContent = siteConfig.footer;
-  renderAds();
   renderNav();
   renderCategories();
   setupSearch();
