@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="发现最好用的 AI 工具 — 对话、图像、代码、写作、视频、效率工具一站导航" />
+  <title>AI Tools Hub — AI 工具导航</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">🧭</span>
+          <div>
+            <h1 class="logo-title">AI Tools Hub</h1>
+            <p class="logo-tagline">发现最好用的 AI 工具</p>
+          </div>
+        </div>
+        <div class="search-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="search" id="search-input" class="search-input" placeholder="搜索 AI 工具 / Skills..." autocomplete="off" />
+        </div>
+      </div>
+    </header>
+
+    <div id="ad-top" class="ad-slot ad-top"></div>
+
+    <main class="main">
+      <aside class="sidebar">
+        <nav class="category-nav" id="category-nav">
+          <h2 class="nav-title">分类导航</h2>
+          <ul id="nav-list" class="nav-list"></ul>
+        </nav>
+
+        <div id="ad-sidebar" class="ad-slot ad-sidebar"></div>
+      </aside>
+
+      <section class="content">
+        <div id="search-result" class="search-result hidden"></div>
+        <div id="tools-container"></div>
+
+        <section class="category-section skills-section" id="github-skills" aria-label="GitHub 热门 Skills">
+          <div class="category-header">
+            <span class="category-icon">⭐</span>
+            <h2 class="category-title">热门 Skills</h2>
+            <button type="button" id="skills-refresh" class="skills-refresh" title="刷新" aria-label="刷新 Skills 列表">↻</button>
+            <span class="category-count" id="skills-count">Top 5</span>
+          </div>
+          <div id="github-skills-list" class="tools-grid skills-grid">
+            <div class="skills-loading">加载中…</div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p id="footer-text"></p>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
