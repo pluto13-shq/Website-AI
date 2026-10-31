@@ -40,6 +40,7 @@ export const categories = [
       { name: 'v0', desc: 'Vercel AI 驱动的 UI 生成工具', icon: '🔮', url: 'https://v0.dev', tags: ['免费', '付费'] },
       { name: 'Codeium', desc: '免费 AI 代码补全', icon: '🚀', url: 'https://codeium.com', tags: ['免费'] },
       { name: 'Replit Agent', desc: 'AI 驱动的在线开发环境', icon: '🔧', url: 'https://replit.com', tags: ['免费', '付费'] },
+      { name: 'agent-qa', desc: '网页与移动端 AI 测试，memidex 持久记忆、经验证的自我改进及可回看证据', icon: '🧪', url: 'https://vostride.com', tags: ['MCP', '模型费用另计'] },
     ],
   },
   {
